@@ -6,6 +6,8 @@ from pygame.locals import *
 import sys
 from datetime import datetime
 
+draw = pygame.draw
+
 
 class Vector:
     '''Constructor:
@@ -58,7 +60,7 @@ class Vector:
 
     def __repr__(self):
         '''Call when user call vector object in interactive mode.'''
-        return f'Vector at {self.position}'
+        return f'{self.position}'
 
     def __str__(self):
         '''Call when user print vector object or convert to string'''
@@ -70,7 +72,9 @@ class Vector:
 
     def __setitem__(self, key, value):
         '''Can change the elements of vector like a tuple.'''
-        self.position[key] = value
+        __position = list(self.position)
+        __position[key] = value
+        self.position = list(__position)
 
     def __add__(self, other):
         '''Can use addition between two vectors.'''
@@ -334,7 +338,7 @@ class Object(abc.ABC):
 
     def add_friction(self, friction):
         '''Add a friction.'''
-        if type(friction) is not NoneType and friction is not None:
+        if friction is not None:
             if self._friction is not None:
                 self._friction += friction
             else:
@@ -520,6 +524,7 @@ class Screen(World):
         return 256
 
     _world = None
+    _event = None
 
     def __init__(self, size, title='Physics Game') -> None:
         self._display = pygame.display
@@ -566,8 +571,9 @@ class Screen(World):
                 self.running = False
 
     def __on_collide(self):
-        if self._event.on_collide is not None:
-            self._event.on_collide(World._get_collision_list(self))
+        if self._event is not None and self._event.on_collide is not None:
+            for i, j in World._get_collision_list(self):
+                self._event.on_collide(i, j)
 
     def update(self, time_load=0.06):
         self.__on_event()

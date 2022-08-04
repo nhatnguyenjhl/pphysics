@@ -1,0 +1,1 @@
+Fixed AttributeError: 'Screen' object has no attribute '_event'. Did you mean: 'set_event'
