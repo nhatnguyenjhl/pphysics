@@ -4,7 +4,7 @@
 ## Installation
 Run ```pip install pphysics```
 
-For more details, see [Installation](https://google.com)
+For more details, see [Installation](https://nhatnguyenjhl.github.io/pphysics/installation.html).
 
 ## Update version 1.1.0
 * Added image alias pygame.image
@@ -63,7 +63,16 @@ For more details, see [Installation](https://google.com)
 
 * Support GameObject.position, GameObject.velocity to be assigned to a tuple, the returned type is automatically converted to Vector.
 
-## DOC
+## DOCUMENTARY
+See documentary pages: [PPhyics Documetation](https://nhatnguyenjhl.github.io/pphysics/).
+
+## EXAMPLE
+See [Simple game's source code](https://github.com/nhatnguyenjhl/pphysics/blob/main/tests/simple_game.py)
+<br>
+<br>
+<br>
+
+
 
 
 
