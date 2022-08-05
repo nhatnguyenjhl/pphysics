@@ -1,12 +1,38 @@
 import abc
 from math import pi, sqrt, tan, fabs, inf
-from turtle import pos, position
 import pygame
 from pygame.locals import *
 import sys
 from datetime import datetime
 
 draw = pygame.draw
+image = pygame.image
+Color = pygame.Color
+cursors = pygame.cursors
+event = pygame.event
+font = pygame.font
+# treetype = pygame.treetype
+# gfxdraw = pygame.gfxdraw
+joystick = pygame.joystick
+key = pygame.key
+mixer = pygame.mixer
+mouse = pygame.mouse
+music = pygame.mixer.music
+PixelArray = pygame.PixelArray
+Rect = pygame.Rect
+scrap = pygame.scrap
+sndarray = pygame.sndarray
+sprite = pygame.sprite
+Surface = pygame.Surface
+surfarray = pygame.surfarray
+time = pygame.time
+transform = pygame.transform
+
+try:
+    with open('VERSION.txt', 'r') as fh:
+        __version__ = fh.read()
+except FileNotFoundError:
+    __version__ = '1.1.0'
 
 
 class Vector:
@@ -24,10 +50,16 @@ class Vector:
 
             Constructor 4:
                 Vector(x, y) -> Vector with position is x, y.
+
+            Constructor 5:
+                Vector() -> Vector with position is 0, 0
     '''
 
     def __init__(self, *args) -> None:
         self.x, self.y = 0, 0
+        if args is None:
+            # Constructor 5
+            return None
         if type(args[0]) is str:
             # Constructor 1
             Vector.get_from_complex(args[0])
@@ -196,7 +228,7 @@ class Object(abc.ABC):
             acceleration: The acceleration, unit metres/second**2 (m/s2), showing under type Vector.
             position: The position of object, showing under type Vector.
             name: The name of object, can't be same at other object.
-            tag: The tag of object.
+            tags: The list of tags of object.
     '''
 
     @ property
@@ -292,6 +324,7 @@ class Object(abc.ABC):
     def set_name(self, name):
         '''Change the name of object, use self.name to get the name.'''
         self._name = name
+        return self
 
     def add_tag(self, tag):
         '''Add the tag of object, use self.tag to get the tag.'''
@@ -299,11 +332,13 @@ class Object(abc.ABC):
             tags.append(tag)
         if tag not in self._tags:
             self._tags.append(tag)
+        return self
 
     def del_tag(self, tag):
         '''Delete a tag on object.'''
         if tag in self._tags:
             self._tags.remove(tag)
+        return self
 
     def get_force(self) -> Vector:
         '''Return value of force.'''
@@ -316,6 +351,7 @@ class Object(abc.ABC):
             For deleting all force in object, use: self.Force(-self.force).
         '''
         self._force += force
+        return self
 
     @ staticmethod
     def Force_to(obj, force: Vector):
@@ -344,6 +380,7 @@ class Object(abc.ABC):
             else:
                 self._friction = friction
             self.Force(-friction._coefficient * self.force)
+        return self
 
     def _update(self):
         '''_update is always called in super().update(time_load)'''
@@ -444,7 +481,7 @@ class World(Object):
     def Force(self, force: Vector):
         for i in range(len(self)):
             self[i].Force(force)
-        super().Force(force)
+        return super().Force(force)
 
     def update(self, time_load=0.06):
         for i in range(len(self)):
@@ -468,19 +505,21 @@ class World(Object):
         return list(__list_collision)
 
     @ abc.abstractclassmethod
-    def add(self, obj: Object) -> None:
+    def add(self, *objs):
         '''
             Add new child object to this object.
         '''
-        __obj = obj
-        __obj.Force(__obj.mass * self._gravity + self._force)
-        # Fixing problem: The Force can't release self.
-        #
-        # self.Force(__obj.mass * (-self._gravity) - self._force)
-        #
-        #
-        obj.add_friction(self._friction)
-        self._objects.append(__obj)
+        for obj in objs:
+            __obj = obj
+            __obj.Force(__obj.mass * self._gravity + self._force)
+            # Fixing problem: The Force can't release self.
+            #
+            # self.Force(__obj.mass * (-self._gravity) - self._force)
+            #
+            #
+            obj.add_friction(self._friction)
+            self._objects.append(__obj)
+        return self
 
     def add_friction(self, friction):
         if friction is not None and type(friction) is not None:
@@ -488,7 +527,7 @@ class World(Object):
                 self[i].add_friction(friction)
             return super().add_friction(friction)
         else:
-            return None
+            return self
 
     def __getitem__(self, key):
         '''ALlows accessing world's objects like a list of objects.'''
@@ -540,10 +579,10 @@ class Screen(World):
         self._tags.append('_screen')
 
     def Force(self, force: Vector):
-        super().Force(force)
+        return super().Force(force)
 
-    def add(self, obj: Object) -> None:
-        return super().add(obj)
+    def add(self, *objs):
+        return super().add(*objs)
 
     def force_to(self, obj, force: Vector):
         return super().force_to(obj, force)
@@ -557,6 +596,7 @@ class Screen(World):
             If you wanna add two world, use self.add().
         '''
         self._world = world
+        return self
 
     def __on_event(self):
         '''
@@ -600,7 +640,8 @@ class Screen(World):
 class GameObject(Object):
     '''
         Constructor:
-            GameObject(size, mass) -> GameObject.
+            GameObject(size, mass, **kwargs) -> GameObject.
+                kwargs is the dictionary of propertes, see Object.__doc__ for more details about propertes.
     '''
 
     @ Object.surface.setter
@@ -612,11 +653,17 @@ class GameObject(Object):
     @ Object.velocity.setter
     def velocity(self, value):
         '''Allows setting the velocity.'''
-        self._velocity = value
+        __value = value
+        if type(value) is not Vector:
+            __value = Vector(value)
+        self._velocity = __value
 
     @ Object.position.setter
     def position(self, value):
-        self._position = value
+        __value = value
+        if type(value) is not Vector:
+            __value = Vector(value)
+        self._position = __value
         self._x, self._y = self._position
 
     @ property
@@ -637,7 +684,7 @@ class GameObject(Object):
         self._y = value
         self._position = Vector(self._x, self._y)
 
-    def __init__(self, size, mass=1):
+    def __init__(self, size, mass=1, **kwargs):
         super().__init__()
         self._size = size
         self._mass = mass
@@ -645,8 +692,14 @@ class GameObject(Object):
         self._tags.append('_game_object')
         self._x, self._y = self._position
 
+        for name in kwargs:
+            try:
+                self.__setattr__(name, kwargs[name])
+            except AttributeError:
+                self.__setattr__('_' + name, kwargs[name])
+
     def Force(self, force: Vector):
-        super().Force(force)
+        return super().Force(force)
 
     def force_to(self, obj, force: Vector):
         return super().force_to(obj, force)
@@ -669,20 +722,24 @@ def start_game(obj: Object):
 
 
 def get_objects_by_tag(tag='_object'):
+    '''Return list of objects which have the tag.'''
     return [obj for obj in objects if obj.tag is tag]
 
 
 def get_object_by_name(name):
+    '''Return object which has the name.'''
     try:
-        return [obj for obj in object if obj.name is name][0]
+        return [obj for obj in objects if obj.name is name][0]
     except IndexError:
         return None
 
 
 def get_objects():
+    '''Return list of object.'''
     return objects
 
 
 def remove_tag(tag):
+    '''Remove tag from tags if it's exist.'''
     if tag in tags:
         tags.remove(tag)

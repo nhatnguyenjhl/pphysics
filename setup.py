@@ -5,7 +5,7 @@ with open('./README.md', 'r') as fh:
 
 setuptools.setup(
     name='pphysics',
-    version='1.0.1',
+    version='1.1.0',
     author='James H. Lasker',
     author_email='jameshlasker@gmail.com',
     description='Package pphysics to use physics in pygame.',
