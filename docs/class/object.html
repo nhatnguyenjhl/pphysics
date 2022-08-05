@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Installation</title>
+        <link rel="stylesheet" href="../style/style.css">
+    </head>
+    <body>
+        <div class="split left">
+            <div class="ngu">
+                <h3 style="
+                    text-align: center;
+                    padding-bottom: 0%;
+                    ">
+                    <a href="index.html">PPhysics</a>
+                </h3>
+                <p style="
+                    text-align: center;
+                    color: grey;
+                    font-size: 15px;
+                    font-style: italic;
+                    padding-top: 0%;
+                    ">
+                    Version 1.1.0 - lastest    
+                </p>
+                <form style="text-align: center;">
+                    <input type="text" style="
+                        border-radius: 10px;
+                        width: 90%;
+                        height: 10%;
+                        font-size: small;
+                        text-align: left;
+                        float: middle;
+                    "/ name="search">   
+                </form>
+                <br>
+                <ul>
+                    <li><a href="../installation.html">Installation</a></li>
+                    <li><a href="../class.html">Class</a></li>
+                    <ul style="padding-left: 20px;">
+                        <li><a href="vector.html">Vector</li>
+                        <li><a href="event.html"">Event</a></li>
+                        <li><a href="friction.html">Friction</a></li>
+                        <li><a href="object.html">Object</a></li>
+                        <li><a href="world.html">World</a></li>
+                        <li><a href="screen.html">Screen</a></li>
+                        <li><a href="gameObject.html">GameObject</a></li>
+                    </ul>
+                    <li><a href="../func.html">Functions</a></li>
+                    <li><a href="../var.html">Variables</a></li>
+                    <br><br><br><br>
+                </ul>
+                <div class="nguend">
+                    <p><a href="https://github.com/nhatnguyenjhl/pphysics/tree/main/src/pphysics">Source</a><br><br><br></p>
+                </div>
+            </div>
+        </div>
+        <div class="split right">
+            <p><a href="../index.html">Docs</a> > <a href="../class.html">Class</a> > Object</p>
+            <br><hr>
+            <h1>Object class</h1>
+            <p style="
+                font-size: 16px;
+                color: gray;
+                font-style: italic;
+                padding-left: 20px;
+            ">
+                parent: abc.ABC
+            </p>
+            <h2>Constructor</h2>
+            <p style="padding-left: 30px;">Object() -> Object.</p>
+            <h2>Fixing</h2>
+            <ul style="list-style-type: none;">
+                <li>Static method Object.Force_to(): error in instance and extend in child.</li>
+                <li>Abstraction method force_to(): error in instance and extend in child.</li>
+                Should not use them now.
+            </ul>
+            <h2>Abstraction Method</h2>
+            <ul>
+                <h4><li>Force()</li></h4>
+                Force(force) -> Object, add force to object.<br><br>
+                <h4><li>update()</li></h4>
+                update(timeload=0.06) -> None, update object.<br><br>
+            </ul>
+            <h2>Class Method</h2>
+            <ul>
+                <h4><li>set_name()</li></h4>
+                set_name(name) -> Object, set the name of object.<br><br>
+                <h4><li>add_tag()</li></h4>
+                add_tag(tag) -> Object, add a tag to object.<br><br>
+                <h4><li>del_tag()</li></h4>
+                del_tag(tag) -> Object, remove a tag of object.<br><br>
+                <h4><li>get_force()</li></h4>
+                get_force() -> Vector, return the force of object, similar with property <i>force</i>.<br><br>
+                <h4><li>add_friction()</li></h4>
+                add_friction(friction: Friction) -> Object, add the friction to object.<br><br>
+                <h4><li>check_collision()</li></h4>
+                check_collision(*objects_list) -> list[_Object], return a list of object which collide with self.<br><br>
+            </ul>
+            <h2>Properties</h2>
+            <ul>
+                <h4><li>surface</li></h4>
+                The showing of object.<br><br>
+                <h4><li>size</li></h4>
+                The size, unit metres (m) for each element.<br><br>
+                <h4><li>mass</li></h4>
+                The mass, unit kilogram (kg).<br><br>
+                <h4><li>force</li></h4>
+                The force, unit Newton (N), showing under type Vector.<br><br>
+                <h4><li>velocity</li></h4>
+                The velocity, unit metres/second (m/s), showing under type Vector.<br><br>
+                <h4><li>acceleration</li></h4>
+                The acceleration, unit metres/second**2 (m/s2), showing under type Vector.<br><br>
+                <h4><li>position</li></h4>
+                The position of object, showing under type Vector.<br><br>
+                <h4><li>name</li></h4>
+                The name of object, can't be same at other object.<br><br>
+                <h4><li>tags</li></h4>
+                The list of tags of object.<br><br>
+                <h4><li>running</li></h4>
+                The status of object, set to <i>True</i> when call Constructor, used in <i>while</i> loop of game.<br>
+                Can set this property.<br>
+                <br>
+                <h4><li>has_collision</li></h4>
+                Fixing property by the error of force_to() and Object.Force_to().<br><br>
+                <h4><li>friction</li></h4>
+                The value of friction.<br><br>
+            </ul>
+            <h2>Static Constaint Variables</h2>
+            <ul>
+                <h4><li>INFINITY_MASS</li></h4>
+                Return the infinity value of mass.<br><br>
+            </ul>
+            <br><br><br>
+            <form action="friction.html">
+                <input type="submit" style="
+                    float: left;
+                    display: inline;
+                    " value="Previous"/>
+            </form>
+            <form action="world.html">
+                <input type="submit" style="
+                    float: right;
+                    display: inline;
+                " value="Next"/>
+            </form>
+            <br><br><br>
+            <br><br><br>
+            <hr>
+            <br><br><br>
+        </div>
+    </body>
+</html>

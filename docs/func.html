@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Installation</title>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+        <div class="split left">
+            <div class="ngu">
+                <h3 style="
+                    text-align: center;
+                    padding-bottom: 0%;
+                    ">
+                    <a href="index.html">PPhysics</a>
+                </h3>
+                <p style="
+                    text-align: center;
+                    color: grey;
+                    font-size: 15px;
+                    font-style: italic;
+                    padding-top: 0%;
+                    ">
+                    Version 1.1.0 - lastest    
+                </p>
+                <form style="text-align: center;">
+                    <input type="text" style="
+                        border-radius: 10px;
+                        width: 90%;
+                        height: 10%;
+                        font-size: small;
+                        text-align: left;
+                        float: middle;
+                    "/ name="search">   
+                </form>
+                <br>
+                <ul>
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="class.html">Class</a></li>
+                    <ul style="padding-left: 20px;">
+                        <li><a href="class/vector.html">Vector</li>
+                        <li><a href="class/event.html"">Event</a></li>
+                        <li><a href="class/friction.html">Friction</a></li>
+                        <li><a href="class/object.html">Object</a></li>
+                        <li><a href="class/world.html">World</a></li>
+                        <li><a href="class/screen.html">Screen</a></li>
+                        <li><a href="class/gameObject.html">GameObject</a></li>
+                    </ul>
+                    <li><a href="func.html">Functions</a></li>
+                    <li><a href="var.html">Variables</a></li>
+                    <br><br><br><br>
+                </ul>
+                <div class="nguend">
+                    <p><a href="https://github.com/nhatnguyenjhl/pphysics/tree/main/src/pphysics">Source</a><br><br><br></p>
+                </div>
+            </div>
+        </div>
+        <div class="split right">
+            <p><a href="index.html">Docs</a> > Local functions</p>
+            <br><hr>
+            <h1>Local functions</h1>
+            <ul style="
+                list-style-type: disc;
+                font-size: large;
+            ">
+                <li><b>start_game()</b></li>
+                <br><my_box>start_game(obj: Object) -> None </my_box><br>
+                Start the game on a object (normal is Screen object).<br>
+                Call the obj.update() in a loop block with conditional obj.running.<br>
+                If you wanna create an owner.<br>
+                The code:<br><br>
+                <img src="./img/code1.png"/><br><br>
+                The time_load use the unit second.<br><br>
+                <li><b>get_objects_by_tag()</b></li>
+                <br><my_box>get_objects_by_tag(tag='_object') -> list[_Object] </my_box><br>
+                Return the list of all objects which have the tag.<br><br>
+                <li><b>get_object_by_name()</b></li><br>
+                <my_box>get_object_by_name(name) -> Object | None </my_box><br>
+                Return an object which has the name, if not return None.<br><br>
+                <li><b>get_objects()</b></li><br>
+                <my_box>get_objects() -> list[_Object] </my_box><br>
+                Return the list of all object.<br><br>
+                <li><b>remove_tag(tag)</b></li><br>
+                <my_box>remove_tag(tag) -> None </my_box><br>
+                Remove a tag if it's exist (in tags), the new tag is only added when calling Object.add_tag(tag).<br><br>
+            </ul>
+            <br><br><br>
+            <form action="class.html">
+                <input type="submit" style="
+                    float: left;
+                    display: inline;
+                    " value="Previous"/>
+            </form>
+            <form action="var.html">
+                <input type="submit" style="
+                    float: right;
+                    display: inline;
+                " value="Next"/>
+            </form>
+            <br><br><br><hr><br><br>
+        </div>
+    </body>
+</html>

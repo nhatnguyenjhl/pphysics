@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Installation</title>
+        <link rel="stylesheet" href="../style/style.css">
+    </head>
+    <body>
+        <div class="split left">
+            <div class="ngu">
+                <h3 style="
+                    text-align: center;
+                    padding-bottom: 0%;
+                    ">
+                    <a href="index.html">PPhysics</a>
+                </h3>
+                <p style="
+                    text-align: center;
+                    color: grey;
+                    font-size: 15px;
+                    font-style: italic;
+                    padding-top: 0%;
+                    ">
+                    Version 1.1.0 - lastest    
+                </p>
+                <form style="text-align: center;">
+                    <input type="text" style="
+                        border-radius: 10px;
+                        width: 90%;
+                        height: 10%;
+                        font-size: small;
+                        text-align: left;
+                        float: middle;
+                    "/ name="search">   
+                </form>
+                <br>
+                <ul>
+                    <li><a href="../installation.html">Installation</a></li>
+                    <li><a href="../class.html">Class</a></li>
+                    <ul style="padding-left: 20px;">
+                        <li><a href="vector.html">Vector</li>
+                        <li><a href="event.html"">Event</a></li>
+                        <li><a href="friction.html">Friction</a></li>
+                        <li><a href="object.html">Object</a></li>
+                        <li><a href="world.html">World</a></li>
+                        <li><a href="screen.html">Screen</a></li>
+                        <li><a href="gameObject.html">GameObject</a></li>
+                    </ul>
+                    <li><a href="../func.html">Functions</a></li>
+                    <li><a href="../var.html">Variables</a></li>
+                    <br><br><br><br>
+                </ul>
+                <div class="nguend">
+                    <p><a href="https://github.com/nhatnguyenjhl/pphysics/tree/main/src/pphysics">Source</a><br><br><br></p>
+                </div>
+            </div>
+        </div>
+        <div class="split right">
+            <p><a href="../index.html">Docs</a> > <a href="../class.html">Class</a> > Vector</p>
+            <br><hr>
+            <h1>Vector class</h1>
+            <h2>Constructor</h2>
+                <ul style="
+                    list-style-type: square;
+                    font-size: large;
+                ">
+                    <h4><li>Constructor 1:</li></h4>
+                    <p style="padding-left: 30px;">Vector(comlex_str: str) -> Vector by complex type from input.</p>
+                    <br>
+    
+                    <h4><li>Constructor 2:</li></h4>
+                    <p style="padding-left: 30px">Vector(position: Iterable) -> Vector with two element of iterable.</p>
+                        <p style="
+                            padding-left: 50px;
+                            color: red;
+                        ">
+                            Caution:   The param 'position' can be another vector.
+                        </p>
+                    <br>
+    
+                    <h4><li>Constructor 3:</li></h4>
+                        <p style="padding-left: 30px;">Vector(start_point, end_point) -> Vector by linking two points.</p>
+                        <p style="
+                            padding-left: 50px;
+                            color: red;
+                        ">
+                            Caution:   Two points must be typed Vector.
+                        </p>
+    
+                    <h4><li>Constructor 4:</li></h4>
+                    <p style="padding-left: 30px;">Vector(x, y) -> Vector with position is x, y.</p>
+    
+                    <h4><li>Constructor 5:</li></h4>
+                    <p style="padding-left: 30px;">Vector() -> Vector with position is 0, 0.</p>
+                </ul>
+            <br><br>
+            <h2>Static Method</h2>
+            <ul>
+                <h4><li>length_of()</li></h4>
+                Vector.length_of(vector) -> float is the lenght of vector folllow the fomula <i>sqrt(x**2 + y**2)</i>.<br><br>
+                <h4><li>get_item_from_complex()</li></h4>
+                Vector.get_item_from_complex(complex_str) -> Vector with complex (use c for angle complex and i for normal complex), 
+                for more details, run <my_box>print(pphysics.Vector.get_item_from_complex.__doc__) </my_box>.<br><br>
+            </ul>
+            <h2>Class Method</h2>
+            <ul>
+                <h4><li>analyze()</li></h4>
+                analyze(i_unit_vector, j_unit_vector) -> tuple[_Float], two float number m,n follow fomula 
+                <i>vector = m * i + n * j</i><br><br>
+                <h4><li>stem_parallelogram_rule()</li></h4>
+                stem_parallelogram_rule(i_same_direction_vector, j_same_direction_vector) -> tuple[_Vector], two vector u, v follow fomula
+                <i>vector = u + v</i> (with u and i is the same direction, v and j is the same direction).<br><br>
+            </ul>
+            <h2>Properties</h2>
+            <ul>
+                <h4><li>length</li></h4>
+                Return the length of self, same the method <i>Vector.length_of(self)</i>.<br><br>
+                <h4><li>position</li></h4>
+                Return a tuple of x and y.<br>
+                Can set this property.<br><br>
+                <h4><li>x</li></h4>
+                Return value of x.<br>
+                Can set this property.<br><br>
+                <h4><li>y</li></h4>
+                Return value of y.<br>
+                Can set this property.<br><br>
+            </ul>
+            <h2>Math Support</h2>
+            <ul style="list-style-type: '- ';">
+                <h4><li>Addition</li></h4>
+                Can do the addition between two vector. <br>
+                Ex:<i>Vector(1, 2) + Vector(2, 4) = Vector(3, 6)</i>.<br>
+                With subtraction similar: <i>Vector(3, 4) - Vector(3, 2) = Vector(0, 2)</i>
+                <br><br>
+                <h4><li>Multipication</li></h4>
+                Can do the multipication between two vector or a vector with a number.<br>
+                Ex: <i>Vector(1, 2) * 3 = Vector(2, 4)</i>.<br>
+                Two vector: <i>Vector (2, 3) * Vector(4, 5) = 23</i>.<br>
+                With divition to a number similar: <i>Vector(10, 5) / 5 = Vector(2, 1)</i>.<br><br>
+                <h4><li>Power</li></h4>
+                Can pow the vector to a number.<br>
+                Ex: <i>Vector(1, 2) ** 2 = 5</i>.
+                Follow the step, if pow index is odd, the return is Vector, is number if even.<br><br>
+                <h4><li>Absolution</li></h4>
+                Call abs on self will return the length of Vector.<br><br>
+                <h4><li>Iteration</li></h4>
+                Can access to a Vector, get item, set item or run in <i>for</i> loop like a tuple.<br><br>
+                <h4><li>toString</li></h4>
+                Return the string of tuple of x, y. <br><br>
+            </ul>
+            <br><br><br>
+            <form action="event.html">
+                <input type="submit" style="
+                        float: right;
+                        display: inline;
+                    " value="Next"/>
+            </form>
+            <br><br><br><hr><br><br><br>
+        </div>
+    </body>
+</html>

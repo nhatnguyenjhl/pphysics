@@ -1,0 +1,88 @@
+
+html{
+    font-family: Arial;
+}
+
+input{
+    width: 120px;
+    height: 60px;
+    color: grey;
+    text-align: center;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+.ngu{
+    width: 100%;
+}
+
+.ngu .nguend p{
+    width: 100%;
+    background-color: black;
+}
+
+.ngu ul{
+    width: 100%;
+    background-color: #222;
+    color: white;
+    list-style-type: none;
+    float: left;
+    padding-left: 0px;
+    padding-right: 30px;
+}
+
+.ngu li a, .dropbtn{
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+}
+.ngu h3 a, .dropbtn{
+    color: white;
+    text-decoration: none;
+}
+
+.ngu li{
+    width: 100%;
+    color: white;
+    padding-bottom: 16px;
+    padding-left: 17px;
+    font-size: small;
+}
+
+.ngu li:hover, .dropdown:hover .dropbtn{
+    background-color: #ffffffaa;
+}
+
+.split {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    width: 25%;
+    padding-top: 0%;
+    left: 0;
+    background-color: lightskyblue;
+}
+
+.right{
+    padding-left: 25px;
+    width: 70%;
+    right: 0;
+    background-color: white;
+}
+
+my_box{
+    font-style: italic;
+    padding: 1px;
+    border: 0.01em solid #00000044;
+    border-radius: 5px;
+    color: red;
+}

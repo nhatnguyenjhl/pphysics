@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Installation</title>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+        <div class="split left">
+            <div class="ngu">
+                <h3 style="
+                    text-align: center;
+                    padding-bottom: 0%;
+                    ">
+                    <a href="index.html">PPhysics</a>
+                </h3>
+                <p style="
+                    text-align: center;
+                    color: grey;
+                    font-size: 15px;
+                    font-style: italic;
+                    padding-top: 0%;
+                    ">
+                    Version 1.1.0 - lastest    
+                </p>
+                <form style="text-align: center;">
+                    <input type="text" style="
+                        border-radius: 10px;
+                        width: 90%;
+                        height: 10%;
+                        font-size: small;
+                        text-align: left;
+                        float: middle;
+                    "/ name="search">   
+                </form>
+                <br>
+                <ul>
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="class.html">Class</a></li>
+                    <ul style="padding-left: 20px;">
+                        <li><a href="class/vector.html">Vector</li>
+                        <li><a href="class/event.html"">Event</a></li>
+                        <li><a href="class/friction.html">Friction</a></li>
+                        <li><a href="class/object.html">Object</a></li>
+                        <li><a href="class/world.html">World</a></li>
+                        <li><a href="class/screen.html">Screen</a></li>
+                        <li><a href="class/gameObject.html">GameObject</a></li>
+                    </ul>
+                    <li><a href="func.html">Functions</a></li>
+                    <li><a href="var.html">Variables</a></li>
+                    <br><br><br><br>
+                </ul>
+                <div class="nguend">
+                    <p><a href="https://github.com/nhatnguyenjhl/pphysics/tree/main/src/pphysics">Source</a><br><br><br></p>
+                </div>
+            </div>
+        </div>
+        <div class="split right">
+            <p style="
+                font-size: medium;
+                padding-bottom: 10px;
+                ">
+                <a href="index.html">Docs</a> 
+                >> Installation
+            </p>
+            <hr>
+            <h1>Installation</h1>
+            <p style="line-height: 25px;">
+                To install PPhysics, install the <my_box>pphysics</my_box> package from PyPI by running 
+                <my_box>pip install pphysics</my_box>.
+                <br><br>If you get an error, maybe "Command not found: pip", you can use 
+                <my_box>pip3 install pphysics</my_box> or link your pip3 to pip: 
+                <my_box>sudo ln /usr/bin/pip3 /usr/local/bin/pip</my_box> on Linux, remove sudo if you run on macOS.
+                <br><br>If you don't want to link or there's an error while linking: 
+                <my_box>echo alias pip=pip3 >> ~/.bashrc</my_box>, .bashrc can be replacing by .bash_profile, .zshrc, 
+                .zsh_profie,... depent to your shell, you can set the shell profile to auto run 
+                <my_box>source ~/.rc</my_box> when starting if you don't know the shell source's file, .rc can be another name.
+            <br><br>OS-specific instructions are below.
+            </p>
+            <h2>Windows</h2>
+            <p style="line-height: 25px;">
+                On Windows, you can use <my_box>py.exe</my_box> programs to run lastest version of python: <br><br>
+                <my_box>py -m pip install pphysics</my_box><br><br>
+                If you have multiple version of Python installed, 
+                you can select which one with a command line argument to py. 
+                For example, for Python 3.9, run: <br><br>
+                <my_box>py -3.9 -m pip install pphysics</my_box><br><br>
+                (This is the same of running <my_box>pip install pphysics</my_box>)
+            </p>
+            <br><h2>Linux and MacOS</h2>
+            <p>
+                On macOS and Linux, you need to run python3 or using the way in top similar doing with pip 
+                (linking or creating alias) to use python:
+                <br><br><my_box>python3 -m pip install pphysics</my_box><br><br>
+                Or if you did it:
+                <br><br><my_box>python -m pip install pphysics</my_box><br><br>
+            </p>
+            <br>
+            <form action="index.html">
+                <input type="submit" style="
+                    float: left;
+                    display: inline;
+                    " value="Previous"/>
+            </form>
+            <form action="class.html">
+                <input type="submit" style="
+                    float: right;
+                    display: inline;
+                " value="Next"/>
+            </form>
+            <br><br><br>
+            <br><br><br>
+            <hr>
+            <br><br><br>
+        </div>
+    </body>
+</html>
