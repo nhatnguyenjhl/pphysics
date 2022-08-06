@@ -6,6 +6,9 @@ Run ```pip install pphysics```
 
 For more details, see [Installation](https://nhatnguyenjhl.github.io/pphysics/installation.html).
 
+## Update version 1.1.1
+* Config metadata
+
 ## Update version 1.1.0
 * Added image alias pygame.image
 
